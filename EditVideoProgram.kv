@@ -1,0 +1,219 @@
+<Button>
+
+    font_size:32
+    background_normal: ''
+    background_color:(0,0,1,1)
+
+<TextInput>
+    background_color: (150/255,150/255,150/255,150/255)
+
+<Label>
+    background_color:(0,0,1,1)
+    font_size: 16
+
+
+<MyLayout>
+    id: myLayout 
+    rows: 12
+    padding: 10
+    spacing: 10
+
+    BoxLayout: 
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Color"
+        
+        TextInput:
+            id: video_color_red
+            hint_text: "red"
+            multiline: False
+            text: "0"
+            input_filter: 'int'
+        TextInput:
+            id: video_color_green
+            hint_text: "green"
+            multiline: False
+            text: "0"
+            input_filter: 'int'
+        TextInput:
+            id: video_color_blue
+            hint_text: "blue"
+            multiline: False
+            text: "0"
+            input_filter: 'int'
+
+    BoxLayout:
+        size: 5, 5
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Position"
+        
+        TextInput:
+            id: video_pos_x
+            text: "0"
+            hint_text: "x"
+            input_filter: 'float'
+            multiline: False
+        TextInput:
+            id: video_pos_y
+            text: "0"
+            hint_text: "y"
+            input_filter: 'float'
+            multiline: False
+        
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Size"
+        
+        TextInput:
+            id: video_size_width
+            text: "1080"
+            hint_text: "width"
+            multiline: False
+            input_filter: 'float'
+        TextInput:
+            id: video_size_height
+            text: "1080"
+            hint_text: "height"
+            multiline: False
+            input_filter: 'float'
+    
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Sacle"
+        
+        TextInput:
+            id: video_size_scale_width
+            text: "1.0"
+            hint_text: "Scale width"
+            multiline: False
+            input_filter: 'float'
+        TextInput:
+            id: video_size_scale_height
+            text: "1.0"
+            hint_text: "Scale height"
+            multiline: False
+            input_filter: 'float'
+
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Contrast"
+        
+        TextInput:
+            id: video_contrast
+            text: "1.0"
+            hint_text: "value"
+            multiline: False
+
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Brightness"
+        
+        TextInput:
+            id: video_brightness
+            text: "1.0"
+            hint_text: "value"
+            multiline: False
+            input_filter: 'float'
+    
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Sharpness"
+        
+        TextInput:
+            id: video_sharpness
+            text: "1.0"
+            hint_text: "value"
+            multiline: False
+            input_filter: 'float'
+    
+    BoxLayout: 
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Speed"
+        
+        TextInput:
+            id: video_speed
+            hint_text: "value"
+            multiline: False
+            text: "1.0"
+            input_filter: 'float'
+
+    BoxLayout: 
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Output video name"
+        
+        TextInput:
+            id: video_output_name
+            text: "Defaut Name"
+            hint_text: "Video Name"
+            multiline: False
+
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        PathButton:
+            on_press: label.text = self.get_path()
+            text: "Choose File"
+
+        TextInput:
+            hint_text: "Source video"
+            id: label
+
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        PathButton:
+            on_press: saveLabel.text = self.get_save_path()
+            text: "Choose save folder"
+
+        TextInput:
+            hint_text: "Destination Folder"
+            id: saveLabel
+
+    BoxLayout:
+        size: 50, 50
+        padding: 10
+        spacing: 10
+
+        Button:
+            on_press: root.renderVideo(label.text,saveLabel.text + "/" +video_output_name.text + ".mp4")
+            text: "Submit"
+    
+        
